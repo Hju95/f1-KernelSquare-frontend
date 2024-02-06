@@ -13,6 +13,7 @@ import type { CoffeeChatReservationTime } from "@/interfaces/dto/coffee-chat/cof
 import { twJoin } from "tailwind-merge"
 import CoffeeChat from "@/components/shared/animation/CoffeeChat"
 import { revalidatePage } from "@/util/actions/revalidatePage"
+import { FaCalendarAlt } from "react-icons/fa"
 
 interface MentorProps {
   reservation: CoffeeChatReservationTime[]
@@ -37,7 +38,13 @@ function ReservationForMentor({ reservation, created }: MentorProps) {
 
   return (
     <section className="text-center mb-20">
-      <div className="font-bold text-primary text-[28px] mb-5">SCHEDULE</div>
+      <div className="font-bold text-primary text-[28px] mb-5">
+        멘토링 예약 현황
+      </div>
+      <div className="font-bold text-secondary text-[20px] mb-5 flex justify-center items-center">
+        <FaCalendarAlt />
+        <div className="ml-2">날짜와 시간을 선택해주세요</div>
+      </div>
       <div className="flex justify-around flex-wrap">
         <div>
           <CustomCalendar

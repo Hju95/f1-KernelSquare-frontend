@@ -12,12 +12,13 @@ import useIntroduction from "../hooks/useIntroduction"
 import Introduction from "./introduction/Introduction"
 import { useParams } from "next/navigation"
 import { twMerge } from "tailwind-merge"
+import MyCoffeeChat from "./myCoffeeChat/MyCoffeeChat"
 
 interface UserProfileMenuProps {
   userPayload: UserPayload
 }
 
-type MenuKey = "Introduction"
+type MenuKey = "Introduction" | "MyCoffeeChat"
 
 function UserProfileMenu({ userPayload }: UserProfileMenuProps) {
   const { user } = useClientSession()
@@ -35,6 +36,8 @@ function UserProfileMenu({ userPayload }: UserProfileMenuProps) {
             userId={user?.member_id}
           />
         )
+      case "MyCoffeeChat":
+        return <MyCoffeeChat />
       default:
         return null
     }
@@ -64,6 +67,15 @@ function UserProfileMenu({ userPayload }: UserProfileMenuProps) {
               </div>
             ),
             active: menu === "Introduction",
+          },
+          {
+            label: "MyCoffeeChat",
+            content: (
+              <div className="flex w-full h-full justify-center mt-2">
+                <Button>예약한 커피챗</Button>
+              </div>
+            ),
+            active: menu === "MyCoffeeChat",
           },
         ]}
       />
